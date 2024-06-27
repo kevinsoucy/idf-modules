@@ -1,26 +1,26 @@
 name: eks
-path: modules/core/eks/
+path: modules/compute/eks/
 dataFiles:
-  - filePath: data/eks_dockerimage-replication/versions/<<EKS_VERSION>>.yaml #replace the EKS_VERSION with the right EKS Cluster version
+  - filePath: data/eks_dockerimage-replication/versions/1.29.yaml #replace the EKS_VERSION with the right EKS Cluster version
   - filePath: data/eks_dockerimage-replication/versions/default.yaml
 parameters:
   - name: vpc-id
     valueFrom:
       moduleMetadata:
-        group: optionals
-        name: networking
+        group: networking
+        name: basic-networking
         key: VpcId
   - name: controlplane-subnet-ids
     valueFrom:
       moduleMetadata:
-        group: optionals
-        name: networking
+        group: networking
+        name: basic-networking
         key: PrivateSubnetIds
   - name: dataplane-subnet-ids
     valueFrom:
       moduleMetadata:
-        group: optionals
-        name: networking
+        group: networking
+        name: basic-networking
         key: LocalZonePrivateSubnetIds
   - name: eks-admin-role-name
     value: Admin
